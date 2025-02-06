@@ -1,0 +1,164 @@
+/* Resetear márgenes y paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo general del cuerpo */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Fondo de lluvia de palabras */
+.fondo-lluvia {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+}
+
+.fondo-lluvia .palabra {
+    position: absolute;
+    color: #f0b7a7;
+    font-size: 4em;  /* Aumentado el tamaño de la fuente */
+    font-weight: bold;
+    animation: caer 7s infinite linear;
+    opacity: 0.7;  /* Palabras un poco transparentes para un fondo más suave */
+}
+
+/* Animación de caída de palabras */
+@keyframes caer {
+    0% { transform: translateY(-100px); opacity: 1; }
+    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Palabras con animaciones distribuidas */
+.fondo-lluvia .palabra:nth-child(1) {
+    left: 5%;
+    animation-duration: 10s;
+    animation-delay: 0s;
+}
+.fondo-lluvia .palabra:nth-child(2) {
+    left: 30%;
+    animation-duration: 11s;
+    animation-delay: 2s;
+}
+.fondo-lluvia .palabra:nth-child(3) {
+    left: 50%;
+    animation-duration: 12s;
+    animation-delay: 1s;
+}
+.fondo-lluvia .palabra:nth-child(4) {
+    left: 70%;
+    animation-duration: 9s;
+    animation-delay: 3s;
+}
+.fondo-lluvia .palabra:nth-child(5) {
+    left: 90%;
+    animation-duration: 10s;
+    animation-delay: 5s;
+}
+
+/* Estilo general del contenedor */
+.contenedor {
+    background-color: #f5f1f3;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Título de la página */
+.titulo {
+    font-size: 2.5em;
+    color: #a66f77;
+    margin-bottom: 20px;
+}
+
+/* Estilo del botón */
+.btn-mostrar {
+    background-color: #a66f77;
+    color: white;
+    font-size: 1.2em;
+    padding: 15px 30px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 70%;
+    margin-top: 20px;
+}
+
+.btn-mostrar:hover {
+    background-color: #8d4d5e;
+    transform: translateY(-5px);
+}
+
+/* Estilo de la pregunta */
+.pregunta {
+    margin-top: 20px;
+    opacity: 0;
+    display: none;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Estilo del input */
+input[type="text"] {
+    font-size: 1.2em;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 2px solid #a66f77;
+    width: 80%;
+    max-width: 300px;
+}
+
+input[type="text"]:focus {
+    border-color: #8d4d5e;
+    outline: none;
+}
+
+/* Estilo de la carta */
+.carta {
+    display: none;
+    background-color: #f9e0e0;
+    color: #333;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: left;
+    font-size: 1.2em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+/* Transición para mostrar la carta */
+.carta.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Transición para la pregunta */
+.pregunta.show {
+    display: block;
+    opacity: 1;
+}
